@@ -1,0 +1,14 @@
+
+player = { name: 'johnny', color: :red}
+colors = [:blue, :white, :green, :red, :orange]
+
+r_color = colors.shuffle.at(1)
+j_color = player[:color]
+
+if j_color == r_color
+  puts "Джонни, ты прав!"
+elsif j_color.length == r_color.length
+  puts "Джонни, букв столько же, но значение иное!"
+else
+  puts "Ты ошибся, попробуй еще раз"
+end
