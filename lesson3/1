@@ -1,0 +1,31 @@
+#hash
+h = { "a" => 100, "b" => 200, "c" => 300 }
+h.delete_if {|key, value| key >= "b" }   #=> {"a"=>100}
+
+{}.empty? #true
+{a:2}.empty? #false
+
+storage = { data: { name: 'John' } }
+storage.dig(:data, :name) # => 'John'
+storage.dig(:data, :age)  # => nil
+
+#symbol
+Symbol.all_symbols
+:b.between?(:a,:c) #true
+:b.between?(:c,:d) #false
+
+#file
+f = File.new("out", "w")
+File.absolute_path(f)
+File.directory?(f)
+File.exist?(f)
+File.mtime(f)
+
+#time
+Time.now
+Time.now.friday?
+Time.now.zone
+
+#kernel
+eval('puts "Hello world"')
+sleep 2
