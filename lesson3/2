@@ -1,0 +1,42 @@
+class Point
+  attr_accessor :x,:y
+
+  def initialize(x:nil,y:nil)
+    @x = x
+    @y = y
+  end
+
+  def quarter?
+    if @x > 0 && @y > 0
+      return "first"
+    elsif @x > 0 && @y < 0
+      return "second"
+    elsif @x < 0 && @y < 0
+      return "third"
+    elsif @x < 0 && @y > 0
+      return "forth"
+    else
+      return "null"
+    end
+  end
+
+  def is_null?
+    @x == 0 && @y == 0
+  end
+
+  def set_null
+    @x = 0
+    @y = 0
+  end
+
+end
+
+
+p3 = Point.new(x:-100,y:110)
+p4 = Point.new(x:-2,y:1)
+
+def similar_quarter? (p1,p2)
+  p1.quarter? == p2.quarter?  && !p1.is_null? && !p2.is_null?
+end
+#puts p4.quarter?
+puts similar_quarter?(p3,p4)
