@@ -1,0 +1,42 @@
+# Задача: записать, прочитать, удалить и обновить данные из базы данных
+
+# Сущность - база данных
+
+class Database
+
+  attr_accessor :hostname, :port, :user, :password, :db_name
+
+  def initialize (hostname:'127.0.0.1', port:'3306', user:'root', password:'', db_name:'')
+    @hostname = hostname
+    @port = port
+    @user = user
+    @password = password
+    @db_name = db_name
+  end
+
+  def connect
+  end
+
+  def disconnect
+  end
+
+  def select request
+  end
+
+  def create request
+  end
+
+  def delete request
+  end
+
+  def update request
+  end
+
+  def to_s
+    puts "Database: #{@hostname}, #{@port}, #{@user}, #{@password}, #{@db_name}"
+  end
+end
+
+#d = Database.new()
+
+#puts d.to_s
