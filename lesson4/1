@@ -1,0 +1,36 @@
+#Base64
+#Методы модуля для кодирования/декодирования строки в base64
+require "base64"
+
+enc   = Base64.encode64('Send reinforcements') # -> "U2VuZCByZWluZm9yY2VtZW50cw==\n"
+plain = Base64.decode64(enc) # -> "Send reinforcements"
+
+#Benchmark
+#Метод модуля, принимающий блок и вычисляющий время его выполнения
+require 'benchmark'
+
+array = (1..1000000).map { rand }
+
+Benchmark.bmbm do |x|
+  x.report("sort!") { array.dup.sort! }
+  x.report("sort")  { array.dup.sort  }
+end
+
+# Find
+require 'find'
+
+pdf_file_paths = []
+Find.find('home/dmitry') do |file|
+  pdf_file_paths << file if file =~ /.*\.pdf$/
+end
+
+#Digest::MD5
+require 'digest'
+
+Digest::MD5.digest 'message'
+
+#Timeout
+require 'timeout'
+status = Timeout::timeout(5) {
+  sleep 10
+}
