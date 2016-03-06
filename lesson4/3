@@ -1,0 +1,40 @@
+class Point
+  attr_accessor :x, :y
+
+  def initialize x:, y:
+    @x = x
+    @y = y
+  end
+end
+
+class Rectangle
+
+  def initialize start_point, end_point
+    @start_point = start_point
+    @end_point   = end_point
+  end
+
+  def length
+    @end_point.x - @start_point.x
+  end
+
+  def width
+    @end_point.y - @start_point.y
+  end
+
+  def area
+    # TODO: Вычисли площадь
+    length*width
+  end
+
+  def perimeter
+    # TODO: Вычисли периметр
+    2*(length + width)
+  end
+
+end
+
+ground = Rectangle.new(Point.new(x: 1, y: 1), Point.new(x: 10, y: 10))
+
+puts ground.area
+puts ground.perimeter
