@@ -1,0 +1,46 @@
+class Point2
+  include Comparable
+  include Math
+
+  attr_accessor :x, :y
+
+  def initialize x:, y:
+    @x = x
+    @y = y
+  end
+end
+class Point
+
+  include Comparable
+  include Math
+
+  attr_accessor :x, :y
+
+  def initialize x:, y:
+    @x = x
+    @y = y
+  end
+
+  def <=> other_point
+    return nil unless other_point.class == Point
+    x1 = x
+    y1 = y
+    x2 = other_point.x
+    y2 = other_point.y
+    result = sqrt_sum_square(x1,y1) - sqrt_sum_square(x2,y2)
+    if result < 0
+      return -1
+    elsif result == 0
+      return 0
+    else
+      return 1
+    end
+  end
+
+  def sqrt_sum_square (x,y)
+    sqrt (x**2 + y**2)
+  end
+
+end
+
+p Point.new(x: 1, y: 2) <=> Point2.new(x: 3, y: 4) # => true
