@@ -1,0 +1,29 @@
+module CalculateYears
+  require 'date'
+
+  def years_old
+    birthday = Date.parse(@date)
+    now = Date.today
+    age = now.year - birthday.year
+    age -= 1 if now.yday < birthday.yday
+  end
+end
+
+class User
+  include CalculateYears
+
+  def initialize name, date_of_birth
+    @date = date_of_birth
+  end
+end
+
+class Winery
+  include CalculateYears
+
+  def initialize title, date_of_foundation
+    @date = date_of_foundation
+  end
+end
+
+User.new('Julie', '1996-07-22').years_old # => 19
+Winery.new('A Light Drop', '1954-08-01').years_old # => 61
