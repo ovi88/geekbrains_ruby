@@ -1,5 +1,6 @@
 require_relative('dicegame/user')
 require_relative('dicegame/dice')
+require_relative('dicegame/validator')
 
 
 module DiceGame
@@ -41,7 +42,9 @@ module DiceGame
   def self.finish
     puts "Game results:"
     @player_array.each do |player|
-      puts "#{player.win}"
+      #puts "#{player.win}"
+      puts player.win
+      #puts @win
     end
   end
 
@@ -57,7 +60,7 @@ current_game = DiceGame.create user_1, user_2
 
 #DiceGame.create user_1, user_2
 user_1.bet score: 12, credits: 400
-user_2.bet score: 7,  credits: 350
+user_2.bet score: 7, credits: 350
 
 #p user_1.credits
 
@@ -67,8 +70,8 @@ current_game.turn
 # => user_1 loses
 # => user_2 wins
 
-user_1.bet score: 6, credits: 100
-user_2.bet score: 7, credits: 300
+user_1.bet score: 6, credits: 600
+user_2.bet score: 7, credits: 500
 
 current_game.turn
 current_game.finish
