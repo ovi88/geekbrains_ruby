@@ -1,0 +1,80 @@
+
+class User
+  attr_accessor :score, :credits, :name, :win
+  def initialize(name)
+    @name = name
+    @win = 0
+  end
+
+  def bet params
+    @score = params[:score]
+    @credits = params[:credits]
+  end
+end
+
+class Dice
+end
+
+module DiceGame
+
+  def self.create *users
+    #p users.name
+    @player_array = []
+    users.each do |u|
+      @player_array.push u
+    end
+    return DiceGame
+    #p @player_array
+  end
+
+  def self.turn
+    #p @player_array
+    score_array = []
+    credist_array = []
+    @player_array.each do |player|
+      score_array.push player.score
+    end
+    result = score_array.sample
+    puts "Wheel of fortune throws: #{result}"
+    @player_array.each do |player|
+      if player.score == result
+        player.win = player.credits + 0.25*player.credits
+        puts "#{player.name} wins"
+        puts "#{player.win}"
+
+      else
+        player.win = player.win - player.credits
+        puts  "#{player.name} loses"
+        puts "#{player.win}"
+      end
+    end
+  end
+
+  def self.finish
+  end
+end
+
+module Validations
+end
+
+user_1 = User.new("user_1")
+user_2 = User.new("user_2")
+
+current_game = DiceGame.create user_1, user_2
+
+#DiceGame.create user_1, user_2
+user_1.bet score: 12, credits: 400
+user_2.bet score: 7,  credits: 350
+
+#p user_1.credits
+
+current_game.turn
+
+# => Wheel of fortune throws: 7
+# => user_1 loses
+# => user_2 wins
+
+user_1.bet score: 6, credits: 100
+user_2.bet score: 7, credits: 300
+
+current_game.turn
