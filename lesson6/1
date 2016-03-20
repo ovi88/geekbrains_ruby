@@ -1,0 +1,25 @@
+require 'active_support/all'
+
+#Hash
+
+test = {}.with_indifferent_access
+test['one'] = 7
+puts test[:one]
+
+test = {one: 1, two: 2, three: 3}
+puts test.except(:one)
+
+puts test.to_query
+
+puts test.transform_keys{ |key| key.to_s }
+
+#Array
+test = [1,2,3,4,5]
+puts test.extract_options!
+test = [1,2,3,4,5,{one:1,two:2}]
+puts test.extract_options!
+
+p Array.wrap(test)
+p Array.wrap(0)
+
+p test.from(2)
