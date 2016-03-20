@@ -1,0 +1,37 @@
+
+class Equation
+
+  include Math
+  class NotFixnum < StandardError
+  end
+
+  def solve a,b,c
+
+      discriminant = b*b - 4*a*c
+      #puts discriminant
+      if discriminant > 0
+        x1 = (-b + sqrt(discriminant))/2*a
+        x2 = (-b - sqrt(discriminant))/2*a
+        puts "You have two answer: x1 = #{x1.round(2)}, x2 = #{x2.round(2)}"
+      elsif discriminant == 0
+        x = -b/2*a
+        puts "You have one answer: x1=x2=#{x.round(2)}"
+      else
+        x1 = Complex(-b, sqrt(discriminant.abs).round(2))/(2*a).to_f
+        x2 = Complex(-b, -sqrt(discriminant.abs).round(2))/2*a.to_f
+        puts "You have complex answer: x1 = #{x1}, x2 = #{x2}"
+      end
+    rescue TypeError => error
+      puts "Arguments must have been Fixnum"
+  end
+end
+
+
+# a, b, c — коэффициенты уравнения (ax^2 + bx + c = 0)
+a = Equation.new
+begin
+a.solve(1, 4, 5)
+rescue ArgumentError => error
+puts "Arguments 3 expected"
+end
+#Equation.solve(1,4,2)
