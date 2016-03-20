@@ -2,11 +2,8 @@
 class Equation
 
   include Math
-  class NotFixnum < StandardError
-  end
 
   def solve a,b,c
-
       discriminant = b*b - 4*a*c
       #puts discriminant
       if discriminant > 0
