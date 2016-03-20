@@ -1,6 +1,6 @@
 numbers = [1, 2, 3, 4, 5]
 #
-# numbers.each { |element| puts element }
+#numbers.each { |element| p element }
 # # => 1
 # # => 2
 # # => 3
@@ -8,8 +8,10 @@ numbers = [1, 2, 3, 4, 5]
 # # => 5
 class Array
   def my_each
-    yield self
+    while ! self.empty?
+       yield self.shift
+    end
   end
 end
 #puts numbers.my_each
-numbers.my_each { |element| puts element }
+numbers.my_each { |element| p element }
