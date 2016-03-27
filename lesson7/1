@@ -1,0 +1,25 @@
+require 'active_support/all'
+
+
+Time.now + 60
+Time.now -60
+
+"Test".safe_constantize
+"test".pluralize
+"test".remove ("e")
+"     ".blank?
+"test_1".dasherize
+
+require 'active_support/configurable'
+
+class User
+  include ActiveSupport::Configurable
+end
+
+user = User.new
+
+user.config.allowed_access = true
+user.config.level = 1
+
+user.config.allowed_access # => true
+user.config.level   # => 1
