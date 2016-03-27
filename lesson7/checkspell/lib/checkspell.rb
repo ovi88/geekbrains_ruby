@@ -8,4 +8,4 @@ module CheckSpell
 
 end
 
-CheckSpell.check("Синхрафазотрон в дубне")
+#CheckSpell.check("синхрафазотрон в дубне")
