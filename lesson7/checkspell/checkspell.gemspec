@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'checkspell'
-  spec.version       = '1.0.0'
+  spec.version       = '0.0.1'
   spec.date          = '2016-03-27'
   spec.summary       = "Spell checking"
   spec.description   = "A simple gem that spell check from yandex api "
