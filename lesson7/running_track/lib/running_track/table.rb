@@ -20,7 +20,7 @@ module RunningTrack
     end
 
     def prepare data
-      JSON.parse(data.read).map! do |row|
+      JSON.parse(data).map! do |row|
         row['Cells'].slice(*HEADINGS).values.flatten
       end
     end

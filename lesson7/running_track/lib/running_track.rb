@@ -18,13 +18,27 @@ module RunningTrack
 
   def self.find query
     collection = TrackCollection.new
-    collection.each do |user|
-      puts user.query
-      #unless user.query.empty?
-      #  puts "#{user.to_s} has #{query}"
-      #end
+    collection.each do |track|
+      if query = 'wifi'
+        if track.wifi? == true
+          puts track.to_s
+        end
+      end
     end
   end
+
+  def self.random count=1
+    collection = TrackCollection.new
+    for i in 1..count
+      puts collection.tracks.sample
+    end
+  end
+
+  def self.save!
+  end
+
+  def self.load!
+  end    
 
   # def self.get_cache
   #   @cache
@@ -50,8 +64,9 @@ end
 
 # p RunningTrack.get_cache.keys
 #RunningTrack.print
-# RunningTrack.print
+ #RunningTrack.print
 RunningTrack.find('wifi')
+#RunningTrack.random(count=3)
 # p RunningTrack.get_cache.keys
 # sleep 5
 # RunningTrack.print

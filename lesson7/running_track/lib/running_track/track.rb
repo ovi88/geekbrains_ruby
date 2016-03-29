@@ -1,4 +1,6 @@
+require 'workflow'
 require_relative 'data'
+
 
 module RunningTrack
 
@@ -8,10 +10,8 @@ module RunningTrack
 
     include Enumerable
 
+
     def each &block
-  #     # Делегирование
-      # @persons.each{ |person| yield person }
-  #     # block # => Proc.new
       @tracks.each &block
 
     rescue NoMethodError
@@ -36,24 +36,56 @@ module RunningTrack
 
   class Track
 
-      attr_reader :address, :name, :district, :wifi
-      
+      include Workflow
+
+      attr_reader :address, :name, :district, :wifi, :record
+
       def to_s
-        #{}"Дорожка: #{@name}, округ: #{@district}, адрес: #{@address}"
-        @record.to_s
+        "Дорожка: #{@name}, округ: #{@district}, адрес: #{@address}"
+        #@record.to_s
+      end
+
+      def wifi?
+        @wifi == 'да'
+      end
+
+      workflow do
+        state(:unknown) do
+          event :max, transitions_to: :good
+          event :avg, transitions_to: :normal
+          event :min, transitions_to: :bad
+        end
+
+        state :good do
+        end
+
+        state :normal do
+        end
+
+        state :bad do
+        end
       end
 
       private
 
       def initialize record
-        @record = record
+        @record = record['Cells']
         @name = record['Cells']['SportZoneName']
         @address = record['Cells']['Address']
         @district = record['Cells']['District']
         @wifi = record['Cells']['ObjectHasWifi']
       end
+
   end
 end
 
-#collection = RunningTrack::TrackCollection.new
-#collection.each { |user| p user.wifi }
+# collection = RunningTrack::TrackCollection.new
+# collection.each do |track|
+#   p track.current_state.name
+#   track.min!
+#   p track.current_state.name
+# end
+
+#
+#track = RunningTrack::Track.new
+#p track.current_state.name
