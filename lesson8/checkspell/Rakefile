@@ -1,0 +1,14 @@
+version = "0.0.2"
+app = "checkspell"
+
+task :build do
+  sh "gem build #{app}.gemspec"
+end
+
+task :install do
+  sh "sudo gem install #{app}-#{version}.gem"
+end
+
+task :publish do
+  sh "gem push #{app}-#{version}.gem"
+end

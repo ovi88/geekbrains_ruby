@@ -1,0 +1,15 @@
+def calculate x
+  if ( x.divmod(3)[1] == 0 and x.divmod(5)[1] == 0 )
+    result = "FizzBuzz"
+  elsif (x.divmod(5)[1] == 0)
+    result = "Buzz"
+  elsif (x.divmod(3)[1] == 0)
+    result = "Fizz"
+  else
+    result = x
+  end
+end
+
+for i in 1..100
+  p calculate i
+end
