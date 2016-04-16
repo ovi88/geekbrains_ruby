@@ -1,0 +1,21 @@
+# rackapp.rb
+require 'rack'
+
+app = Proc.new do |env|
+  req = Rack::Request.new(env)
+  ua = req.user_agent
+  ip = req.ip
+  url = req.url
+  [200, {}, ["Hey, this is Rack, bro! \n", "User-agent: #{ua} \n", "IP: #{ip} \n", "Url: #{url} \n"]]
+end
+#Rack::Handler::WEBrick.run app
+
+response =Proc.new do |env|
+  res = Rack::Response.new
+  res.write("Hello world")
+  res.status = 200
+  res.redirect('/hello',status=302)
+  res.finish
+end
+
+Rack::Handler::WEBrick.run response
