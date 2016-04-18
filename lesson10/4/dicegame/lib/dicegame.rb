@@ -53,25 +53,25 @@ module DiceGame
   end
 end
 
-#user_1 = DiceGame::User.new("user_1")
-#user_2 = DiceGame::User.new("user_2")
-
-#current_game = DiceGame.create user_1, user_2
-
-#DiceGame.create user_1, user_2
-#user_1.bet score: 12, credits: 400
-#user_2.bet score: 7, credits: 350
-
-#p user_1.credits
-
-#current_game.turn
-
-# => Wheel of fortune throws: 7
-# => user_1 loses
-# => user_2 wins
-
-#user_1.bet score: 6, credits: 600
-#user_2.bet score: 7, credits: 500
-
-#current_game.turn
-#current_game.finish
+# user_1 = DiceGame::User.new("user_1")
+# user_2 = DiceGame::User.new("user_2")
+#
+# current_game = DiceGame.create user_1, user_2
+#
+# #DiceGame.create user_1, user_2
+# user_1.bet score: 12, credits: 400
+# user_2.bet score: 7, credits: 350
+#
+# #p user_1.credits
+#
+# current_game.turn
+#
+# # => Wheel of fortune throws: 7
+# # => user_1 loses
+# # => user_2 wins
+#
+# user_1.bet score: 6, credits: 600
+# user_2.bet score: 7, credits: 500
+#
+# current_game.turn
+# current_game.finish
