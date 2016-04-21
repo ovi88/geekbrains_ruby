@@ -20,32 +20,37 @@ module DiceGame
     #p @player_array
     score_array = []
     credits_array = []
+    @turn_result = []
     @player_array.each do |player|
       score_array.push player.score
     end
     result = Dice.new.roll
-    puts "Wheel of fortune throws: #{result}"
+    @turn_result.push "Wheel of fortune throws: #{result}"
     @player_array.each do |player|
       if player.score == result
         player.win += WINSIZE*player.credits
-        puts "#{player.name} wins"
+        @turn_result.push "#{player.name} wins"
+        #@trun_result.push "#{player.win}"
         #puts "#{player.win}"
-
       else
         player.win -= player.credits
-        puts  "#{player.name} loses"
-        #puts "#{player.win}"
+        @turn_result.push  "#{player.name} loses"
+        #@trun_result.push "#{player.win}"
+        #puts
       end
     end
+    return @turn_result
   end
 
   def self.finish
-    puts "Game results:"
+    @finish_result = []
+    @finish_result.push "Game results:"
     @player_array.each do |player|
-      #puts "#{player.win}"
-      puts player.win
+      puts "#{player.win}"
+      #@finish_result.push player.win
       #puts @win
     end
+    return @finish_result
   end
 
   def self.version

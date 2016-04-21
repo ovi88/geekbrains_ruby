@@ -6,5 +6,13 @@
   </head>
   <body>
     <%= @result_turn%>
+    <%= @user_1.win%>
+    <form action="/">
+      <input type="submit" value="Еще сделать ставку"></input>
+    </form>
+    <form action="/finish">
+      <input type="submit" value="Закончить игру"></input><br>
+    </form>
+
   </body>
 </html>
